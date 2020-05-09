@@ -6,24 +6,20 @@
   </head>
   <body>
     <form>
-      <input type="text" name="value1" id="value1" value="0">+
-      <input type="text" name="value2" id="value2" value="0"><br>
-      <br>
-      Sum: <span id="sum">-</span>
+      <select name="select1" id="select1">
+        <option value="-">-</option>
+        <option value="A">Option A</option>
+        <option value="B">Option B</option>
+        <option value="C">Option C</option>
+      </select>
+      <br><br>
+      Selected: <span id="selected">-</span>
     </form>
     <script>
       function ready() {
-        document.querySelectorAll('input').forEach(function(input) {
-          input.addEventListener('change', function(event) {
-            const value1 = parseInt(document.getElementById('value1').value, 10);
-            const value2 = parseInt(document.getElementById('value2').value, 10);
-            if (isNaN(value1) || isNaN(value2)) {
-              document.getElementById('sum').textContent = '-';
-            } else {
-              document.getElementById('sum').textContent = value1 + value2;
-            }
-          }, false);
-        });
+        document.getElementById("select1").addEventListener('change', function(event) {
+          document.getElementById('selected').textContent = event.target.value;
+        }, false);
       }
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', ready);
